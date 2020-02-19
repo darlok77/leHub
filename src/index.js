@@ -9,11 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './style.scss'
 
 // Components
-import Home from './containers/home'
+import Routes from './route'
 
 const App = () => (
   <Provider store={store}>
-    <Home />
+    <Routes />
   </Provider>
 )
 
