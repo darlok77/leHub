@@ -1,4 +1,6 @@
 export default {
   user: [],
-  events: []
+  events: [],
+  games: [],
+  promotions: []
 }

@@ -8,6 +8,17 @@ const getUser = (state, action) => (
     .setIn(['user'], action.user)
     .toJS()
 )
+const getAllGames = (state, action) => (
+  fromJS(state)
+    .setIn(['games'], action.games)
+    .toJS()
+)
+
+const getAllPromotions = (state, action) => (
+  fromJS(state)
+    .setIn(['promotions'], action.promotions)
+    .toJS()
+)
 
 const getAllEvents = (state, action) => (
   fromJS(state)
@@ -19,6 +30,10 @@ const home = (state = initialState, action) => {
   switch (action.type) {
     case actionsType.GET_USER:
       return getUser(state, action)
+    case actionsType.GET_ALL_GAMES:
+      return getAllPromotions(state, action)
+    case actionsType.GET_ALL_PROMOTIONS:
+      return getAllGames(state, action)
     case actionsType.GET_ALL_EVENTS:
       return getAllEvents(state, action)
     default:
