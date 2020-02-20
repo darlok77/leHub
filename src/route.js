@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import Home from './containers/home'
 import GamePage from './containers/game'
+import NavBar from './containers/navbar'
 
 /* Class Routes */
 class Routes extends Component {
@@ -15,6 +16,7 @@ class Routes extends Component {
       <div>
         <BrowserRouter>
           <div>
+            <NavBar />
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/games" component={GamePage} />
