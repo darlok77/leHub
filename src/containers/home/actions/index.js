@@ -8,10 +8,21 @@ const actionGetUser = user => ({
   user
 })
 
+const actionGetEvent = events => ({
+  type: actionsType.GET_ALL_EVENTS,
+  events
+})
+
 export const getUser = (id) => {
   const apiUrl = `http://localhost:8082/users/show/${id}`
   axios.get(apiUrl).then((response) => {
-    console.log('t')
     store.dispatch(actionGetUser(response.data))
+  })
+}
+
+export const getAllEvent = () => {
+  const apiUrl = 'http://localhost:8082/events/show'
+  axios.get(apiUrl).then((response) => {
+    store.dispatch(actionGetEvent(response.data))
   })
 }
