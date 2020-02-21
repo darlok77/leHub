@@ -10,7 +10,12 @@ import {
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 
-import { getUser, getAllEvents, getAllGames } from './actions'
+import {
+  getUser,
+  getAllEvents,
+  getAllGames,
+  getAllPromotions
+} from './actions'
 
 const styles = {
   root: {
@@ -42,10 +47,16 @@ class Home extends Component {
     getUser(1)
     getAllEvents()
     getAllGames()
+    getAllPromotions()
   }
 
   render() {
-    const { user, classes, events, games } = this.props
+    const {
+      user,
+      classes,
+      events,
+      games
+    } = this.props
     console.log(games)
     return (
       <div className={classes.containerHome}>
@@ -69,8 +80,7 @@ class Home extends Component {
             </Typography>
           </div>
         </div>
-        <div>
-        </div>
+        <div>test</div>
         <div className={classes.containerCard}>
           {events.map(event => (
             <Card key={nextId()} className={classes.root}>

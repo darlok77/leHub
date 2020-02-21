@@ -13,27 +13,28 @@ const actionGetEvents = events => ({
   events
 })
 
-const actionGetGames = events => ({
+const actionGetgames = games => ({
   type: actionsType.GET_ALL_GAMES,
   games
 })
 
-const actionGetPromotions = events => ({
+const actionGetPromotions = promotions => ({
   type: actionsType.GET_ALL_PROMOTIONS,
-  games
+  promotions
 })
 
 export const getUser = (id) => {
   const apiUrl = `http://localhost:8082/users/show/${id}`
   axios.get(apiUrl).then((response) => {
+    console.log('r')
     store.dispatch(actionGetUser(response.data))
   })
 }
 
-export const getAllEvent = () => {
+export const getAllEvents = () => {
   const apiUrl = 'http://localhost:8082/events/show'
   axios.get(apiUrl).then((response) => {
-    store.dispatch(actionGetEvent(response.data))
+    store.dispatch(actionGetEvents(response.data))
   })
 }
 
@@ -44,7 +45,7 @@ export const getAllGames = () => {
   })
 }
 
-export const getAllGames = () => {
+export const getAllPromotions = () => {
   const apiUrl = 'http://localhost:8082/promotions/show'
   axios.get(apiUrl).then((response) => {
     store.dispatch(actionGetPromotions(response.data))
