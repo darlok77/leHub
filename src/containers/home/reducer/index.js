@@ -3,55 +3,41 @@ import { fromJS } from 'immutable'
 import initialState from './initial-state'
 import actionsType from '../actions/actions-type'
 
-const updatePlayer = (state, action) => (
+const getUser = (state, action) => (
   fromJS(state)
-    .setIn(['player'], action.player)
+    .setIn(['user'], action.user)
+    .toJS()
+)
+const getAllGames = (state, action) => (
+  fromJS(state)
+    .setIn(['games'], action.games)
     .toJS()
 )
 
-const updateWorld = (state, action) => (
+const getAllPromotions = (state, action) => (
   fromJS(state)
-    .setIn(['world'], action.world)
+    .setIn(['promotions'], action.promotions)
     .toJS()
 )
 
-const updateNumber = (state, action) => (
+const getAllEvents = (state, action) => (
   fromJS(state)
-    .setIn(['number'], action.number)
-    .toJS()
-)
-
-const updateTurn = (state, action) => (
-  fromJS(state)
-    .setIn(['turn'], action.turn)
-    .toJS()
-)
-
-const updateBase = (state, action) => (
-  fromJS(state)
-    .setIn(['bases'], action.bases)
-    .toJS()
-)
-const updateCurrentCase = (state, action) => (
-  fromJS(state)
-    .setIn(['currentCase'], action.currentCase)
+    .setIn(['events'], action.events)
     .toJS()
 )
 
 const home = (state = initialState, action) => {
   switch (action.type) {
-    case actionsType.NEXT_PLAYER:
-      return updatePlayer(state, action)
-    case actionsType.UPDATE_WORLD:
-      return updateWorld(state, action)
-    case actionsType.NEW_NUMBER:
-      return updateNumber(state, action)
-    case actionsType.NEW_TURN:
-      return updateTurn(state, action)
-    case actionsType.UPDATE_BASE:
-      return updateBase(state, action)
-    case actionsType.UPDATE_CURRENT_CASE:
-      return updateCurrentCase(state, action)
+    case actionsType.GET_USER:
+      return getUser(state, action)
+    case actionsType.GET_ALL_GAMES:
+      console.log('game')
+      return getAllGames(state, action)
+    case actionsType.GET_ALL_PROMOTIONS:
+      console.log('pro')
+      return getAllPromotions(state, action)
+    case actionsType.GET_ALL_EVENTS:
+      return getAllEvents(state, action)
     default:
       return state
   }
