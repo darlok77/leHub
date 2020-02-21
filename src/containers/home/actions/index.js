@@ -26,7 +26,6 @@ const actionGetPromotions = promotions => ({
 export const getUser = (id) => {
   const apiUrl = `http://localhost:8082/users/show/${id}`
   axios.get(apiUrl).then((response) => {
-    console.log('r')
     store.dispatch(actionGetUser(response.data))
   })
 }

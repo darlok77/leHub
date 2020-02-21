@@ -21,7 +21,13 @@ const styles = {
   root: {
     maxWidth: 120
   },
+  mediaContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column'
+  },
   media: {
+
     height: 50,
     width: 50
   },
@@ -55,9 +61,73 @@ class Home extends Component {
       user,
       classes,
       events,
-      games
+      games,
+      promotions
     } = this.props
-    console.log(games)
+    let promotionComponent = null
+    let eventComponent = null
+    let gameComponent = null
+
+    if (events.length !== 0) {
+      eventComponent = (
+        <div className={classes.containerCard}>
+          {events.map(event => (
+            <Card key={nextId()} className={classes.root}>
+              <CardActionArea className={classes.mediaContainer}>
+                <CardMedia
+                  className={classes.media}
+                  image={event.img}
+                />
+                <CardContent>
+                  <Typography gutterBottom component="h2">{event.name}</Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          ))}
+        </div>
+      )
+    }
+
+    if (promotions.length !== 0) {
+      promotionComponent = (
+        <div className={classes.containerCard}>
+          {promotions.map(promotion => (
+            <Card key={nextId()} className={classes.root}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={promotion.img}
+                />
+                <CardContent>
+                  <Typography gutterBottom component="h2">{promotion.name}</Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          ))}
+        </div>
+      )
+    }
+
+    if (games.length !== 0) {
+      gameComponent = (
+        <div className={classes.containerCard}>
+          {games.map(game => (
+            <Card key={nextId()} className={classes.root}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image={game.img}
+                />
+                <CardContent>
+                  <Typography gutterBottom component="h2">{game.name}</Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          ))}
+        </div>
+      )
+    }
+
     return (
       <div className={classes.containerHome}>
         <div className={classes.containerHomeHeader}>
@@ -80,21 +150,28 @@ class Home extends Component {
             </Typography>
           </div>
         </div>
-        <div>test</div>
-        <div className={classes.containerCard}>
-          {events.map(event => (
-            <Card key={nextId()} className={classes.root}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image={event.img}
-                />
-                <CardContent>
-                  <Typography gutterBottom component="h2">{event.name}</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))}
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div>Promotions</div>
+          {promotions.length !== 0
+            ? promotionComponent
+            : null
+          }
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'row' }} className={classes.containerHomeHeader}>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div>événements</div>
+            {events.length !== 0
+              ? eventComponent
+              : null
+            }
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div>jeux</div>
+            {games.length !== 0
+              ? gameComponent
+              : null
+            }
+          </div>
         </div>
       </div>
     )
@@ -110,7 +187,8 @@ const mapStateToProps = state => (
   {
     user: state.home.user,
     events: state.home.events,
-    games: state.home.games
+    games: state.home.games,
+    promotions: state.home.promotions
   }
 )
 

@@ -31,9 +31,11 @@ const home = (state = initialState, action) => {
     case actionsType.GET_USER:
       return getUser(state, action)
     case actionsType.GET_ALL_GAMES:
-      return getAllPromotions(state, action)
-    case actionsType.GET_ALL_PROMOTIONS:
+      console.log('game')
       return getAllGames(state, action)
+    case actionsType.GET_ALL_PROMOTIONS:
+      console.log('pro')
+      return getAllPromotions(state, action)
     case actionsType.GET_ALL_EVENTS:
       return getAllEvents(state, action)
     default:
