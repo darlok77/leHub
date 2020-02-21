@@ -34,7 +34,7 @@ class Home extends Component {
           </ListItem>
           <ListItem button>
             <ListItemIcon>
-              <Link to="/rank">
+              <Link to="/games">
                 <img className={classes.img} src="/asset/image/classement.svg" alt="classement" />
               </Link>
             </ListItemIcon>

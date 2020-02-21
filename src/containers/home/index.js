@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import nextId from 'react-id-generator'
+import { Link } from 'react-router-dom'
+
 import {
   Card,
   CardActionArea,
@@ -19,7 +21,8 @@ import {
 
 const styles = {
   root: {
-    maxWidth: 120
+    maxWidth: 120,
+    backgroundColor: '#999999'
   },
   mediaContainer: {
     display: 'flex',
@@ -42,8 +45,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between'
   },
+  containerHeaderGame: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   containerHomeScore: {
-    float: 'right'
+    marginLeft: '80vh'
   }
 }
 
@@ -93,7 +100,7 @@ class Home extends Component {
         <div className={classes.containerCard}>
           {promotions.map(promotion => (
             <Card key={nextId()} className={classes.root}>
-              <CardActionArea>
+              <CardActionArea className={classes.mediaContainer}>
                 <CardMedia
                   className={classes.media}
                   image={promotion.img}
@@ -113,11 +120,13 @@ class Home extends Component {
         <div className={classes.containerCard}>
           {games.map(game => (
             <Card key={nextId()} className={classes.root}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image={game.img}
-                />
+              <CardActionArea className={classes.mediaContainer}>
+                <Link to="/games">
+                  <CardMedia
+                    className={classes.media}
+                    image={game.img}
+                  />
+                </Link>
                 <CardContent>
                   <Typography gutterBottom component="h2">{game.name}</Typography>
                 </CardContent>
@@ -157,7 +166,7 @@ class Home extends Component {
             : null
           }
         </div>
-        <div style={{ display: 'flex', flexDirection: 'row' }} className={classes.containerHomeHeader}>
+        <div style={{ display: 'flex', flexDirection: 'row' }} className={classes.containerHeaderGame}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div>événements</div>
             {events.length !== 0
