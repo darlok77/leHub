@@ -8,36 +8,42 @@ import {
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
-  root: {
-    width: 30
+  navbar: {
+    backgroundColor: '#2F3136',
+    height: '100vh'
+  },
+  img: {
+    margin: 'auto',
+    display: 'block'
   }
 }
 
 class Home extends Component {
   render() {
     const { classes } = this.props
+    console.log(classes)
     return (
-      <div>
+      <div className={classes.navbar}>
         <List>
           <ListItem button>
             <ListItemIcon>
               <Link to="/">
-                <img src="/asset/image/home.svg" alt="Home" />
+                <img className={classes.img} src="/asset/image/home.svg" alt="Home" />
               </Link>
             </ListItemIcon>
           </ListItem>
           <ListItem button>
             <ListItemIcon>
-             <Link to="/rank">
-                <img src="/asset/image/classement.svg" alt="classement" />
+              <Link to="/rank">
+                <img className={classes.img} src="/asset/image/classement.svg" alt="classement" />
               </Link>
             </ListItemIcon>
           </ListItem>
           <ListItem button>
-            <ListItemIcon>
-            <Link to="/event">
-              <img src="/asset/image/events.svg" alt="Event" />
-            </Link>
+            <ListItemIcon className={classes.item}>
+              <Link to="/event">
+                <img className={classes.img} src="/asset/image/events.svg" alt="Event" />
+              </Link>
             </ListItemIcon>
           </ListItem>
         </List>
