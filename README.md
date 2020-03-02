@@ -1,18 +1,14 @@
-# Blockos
+# leHub 
 
-## Introduction :
+## requiered
 
-Blockos est un jeux de plateau strategique. 
+install `nodejs`
 
-## Pré-requis :
+## Installation
 
-* Installer `nodejs` & `npm`
+`git clone https://github.com/darlok77/leHub.git`  
+in this project import the dependance `npm i`   
 
-## Comment l'utiliser :
-
-* `git clone https://github.com/darlok77/Blockos.git`
-* `npm i`
-
-* run `npm run start`
-* regle fournit dans le dosier rules"# leHub" 
-"# leHub" 
+## run
+run the project `npm run start`  
+run test with `npm run test`
